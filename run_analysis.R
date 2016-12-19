@@ -1,3 +1,10 @@
+# place this file into the folder containing the UCI HAR data after unzipped, namely: 
+# - the folder contains the file features.txt
+# - the folder contains two subfolders called 'train' and 'test' with the respective data inside. 
+# the output of this file will be a text file named Averages_data.txt and will appead in that same folder
+
+
+
 # Call packages needed for this file to run
 library(dplyr)
 
@@ -7,11 +14,11 @@ library(dplyr)
 # A - TRAINING dataset.  
 #---------------------------------------------
 # X_train are the activity levels , Y_train are the activity labels (1 2 3 4 5 or 6)
-xtrain <- read.table("./data/UCIHAR/train/X_train.txt")
+xtrain <- read.table("./train/X_train.txt")
 head(xtrain) 
 
 # features (= variable names)
-features <- read.table("./data/UCIHAR/features.txt", header=FALSE)
+features <- read.table("features.txt", header=FALSE)
 # make a vector of those names to use on xtrain
 column_names <- features[,2]
 column_names
@@ -20,7 +27,7 @@ colnames(xtrain) <- column_names
 head(xtrain)
 
 # Training labels are in "Y_train", they can be merged as an additional column
-ytrain <- read.table("./data/UCIHAR/train/Y_train.txt")
+ytrain <- read.table("./train/Y_train.txt")
 head(ytrain)
 # careful: can't have plyr as a package for this to work
 ytrain <- rename(ytrain, activity = V1) 
@@ -33,7 +40,7 @@ head(ytrain)
 #train <- merge(ytrain, xtrain)
 
 # Test subects are in "subject_train" file
-subtrain <- read.table("./data/UCIHAR/train/subject_train.txt")
+subtrain <- read.table("./train/subject_train.txt")
 head(subtrain)
 subtrain <- rename(subtrain, subject = V1) 
 head(subtrain)
@@ -53,20 +60,20 @@ train <- merge(subtrain, merge1)
 
 # B - Same with TEST dataset 
 #---------------------------------------------
-xtest <- read.table("./data/UCIHAR/test/X_test.txt")
+xtest <- read.table("./test/X_test.txt")
 head(xtest) 
 # names for test and train are the same
 colnames(xtest) <- column_names
 head(xtest)
 
 # now get y_ file of test labels 
-ytest <- read.table("./data/UCIHAR/test/y_test.txt")
+ytest <- read.table("./test/y_test.txt")
 head(ytest)
 ytest <- rename(ytest, activity = V1) 
 head(ytest)
 
 # Test subects are in "subject_train" file
-subtest <- read.table("./data/UCIHAR/test/subject_test.txt")
+subtest <- read.table("./subject_test.txt")
 head(subttest)
 subtest <- rename(subtest, subject = V1) 
 head(subtest)
