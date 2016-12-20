@@ -10,7 +10,7 @@
   * All other variables variables are named after the original measurements (see below), with with either "mean" of "std" suffixes to denote the mean of measurements 
   * All numeric data for these variables denotes the average of all such measurements taken for a given individual doing a given activity. 
 
-2. Variables are named after the original measurements, described below:  
+2. All other variables are named after the original measurements, described below:  
   tBodyAcc_XYZ  
   tGravityAcc_XYZ   
   tBodyAccJerk_XYZ  
